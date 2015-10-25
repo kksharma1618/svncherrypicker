@@ -17,9 +17,8 @@ I personally don't like to cherrypick in svn. But sometimes I have to work with 
 Install using npm
 
 ``` bash
-npm install svncp
+npm install svncherrypicker
 ```
-Package name is not yet final. Will publish to npm and update this part.
 
 ## Help
 
