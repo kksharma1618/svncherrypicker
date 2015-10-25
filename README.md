@@ -72,12 +72,19 @@ svncp filter --paths exactpath
 ```
 
 I can adjust the response of filter command by --display option.
-I will use "c" to only display number of match commits. "t" to display response in a table. "j" to return response in json format
+I will use "c" to only display number of matched commits. "t" to display response in a table. "j" to return response in json format
 I can also adjust which fields to return. "a,d,p,m" author,date,paths,message
 So for example:
 ``` bash
 svncp filter --author user1 --paths g:lib/*.js --display t --fields "p,m"
+```
 Will return all the revisions made by user1 which changed/added/removed js files inside lib folder. It will print information in a table. It will only print Revision Number, Paths, and Message fields.
+
+**Response**
+Revision Number | Paths | Message
+--------------- | ----- | -------
+23 | lib/somefile.js | Updated it to do something
+34 | lib/someotherfile.js | Fixed some issue
 
 If I run svncp filter and I see the response where I want all the revisions.
 I will just use
