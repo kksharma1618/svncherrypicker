@@ -84,7 +84,7 @@ Will return all the revisions made by user1 which changed/added/removed js files
 **Response**
 
 | Revision Number | Paths           | Message  |
-| ------------- |:-------------:| -----:|
+| ------------- | ------------- | ----- |
 | 23      | lib/somefile.js | Updated it to do something |
 | 34      | lib/someotherfile.js      |   Fixed some issue |
 
@@ -93,15 +93,16 @@ I will just use
 ``` bash
 svncp pick last
 ```
-Which will add lastly filtered revisions to saved bucket.
+Which will add filtered revisions from last filter command to saved bucket.
 
-If I only want few revisions from filtered response.
-I can just select them
+If I only want few revisions from filtered response. I can just select them.
+
 ``` bash
 svncp pick 23,45,67
 ```
 
-I can use unpick command to remove some or all revisions from saved bucket
+I can use unpick command to remove some or all revisions from saved bucket.
+
 ``` bash
 svncp unpick 23,67
 svncp unpick all
