@@ -5,11 +5,11 @@ a small command line utility written in nodejs to help find unmerged commits whi
 I personally don't like to cherrypick in svn. But sometimes I have to work with teams where cherrypicking is normal part of the workflow. I wrote this utility to make cherrypicking a little easier.
 
 ## Workflow
-1) **svncp setup**: Start a session by providing source and destination url for the svn repository (source to destination merge)
-2) **svncp populate**: Find commits in source which are not yet merged to destination. Caches it for faster access.
-3) **svncp filter**: Use filters commands to find revisions that you want. You can filter by author, dates, revision numbers, messages, updated files, etc.
-4) **svncp pick/unpick**: Add/remove revision to/from save basket.
-5) **svncp merge**: Once you have finalized revisions that you want to merge (using series of *svncp filter* and *svncp pick/unpick*), use this to generate merge command.
+1. **svncp setup**: Start a session by providing source and destination url for the svn repository (source to destination merge)
+2. **svncp populate**: Find commits in source which are not yet merged to destination. Caches it for faster access.
+3. **svncp filter**: Use filters commands to find revisions that you want. You can filter by author, dates, revision numbers, messages, updated files, etc.
+4. **svncp pick/unpick**: Add/remove revision to/from save basket.
+5. **svncp merge**: Once you have finalized revisions that you want to merge (using series of *svncp filter* and *svncp pick/unpick*), use this to generate merge command.
 
 
 ## Installation
