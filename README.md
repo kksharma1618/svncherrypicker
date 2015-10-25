@@ -17,7 +17,7 @@ I personally don't like to cherrypick in svn. But sometimes I have to work with 
 Install using npm
 
 ``` bash
-npm install svncherrypicker
+npm install -g svncherrypicker
 ```
 
 ## Help
