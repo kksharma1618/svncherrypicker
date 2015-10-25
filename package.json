@@ -1,0 +1,35 @@
+{
+  "name": "svncherrypicking",
+  "version": "1.0.0",
+  "description": "a small utility to find unmerged commits",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://xp-dev.com/git/svncherrypicking"
+  },
+  "keywords": [
+    "svn",
+    "cherrypicking"
+  ],
+  "author": "Krishna Kant Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.4.2",
+    "cli-table": "^0.3.1",
+    "clui": "^0.3.1",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "fs-extra": "^0.24.0",
+    "md5": "^2.0.0",
+    "minimatch": "^3.0.0",
+    "moment": "^2.10.6",
+    "svn-spawn": "^0.1.4",
+    "underscore": "^1.8.3"
+  },
+  "bin": {
+    "svncp": "bin/index.js"
+  }
+}
