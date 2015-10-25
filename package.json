@@ -6,16 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://xp-dev.com/git/svncherrypicking"
+    "url": "https://github.com/kksharma1618/svncherrypicker.git"
   },
   "keywords": [
     "svn",
     "cherrypicking"
   ],
   "author": "Krishna Kant Sharma",
-  "license": "ISC",
   "dependencies": {
     "async": "^1.4.2",
     "cli-table": "^0.3.1",
