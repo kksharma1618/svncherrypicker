@@ -8,10 +8,10 @@ var core = require("../index");
 program.version('1.0.0');
 
 program
-    .command('setup [source] [destination] [baseurl]')
+    .command('setup [source] [destination]')
     .description('setup current session. all future commands will use these values')
-    .action(function(source, destination, baseUrl){
-        core.setupCurrentSession(source, destination, baseUrl);
+    .action(function(source, destination){
+        core.setupCurrentSession(source, destination, "");
         console.log('Current session saved'.green);
     });
 
