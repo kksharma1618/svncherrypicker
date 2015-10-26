@@ -284,7 +284,7 @@ core.filter = function(o, next) {
                     }
                 }
                 else {
-                    if(r.message.toLowerCase().indexOf(s.toLowerCase()) <= 0) {
+                    if(r.message.toLowerCase().indexOf(s.toLowerCase()) < 0) {
                         continue;
                     }
                 }
