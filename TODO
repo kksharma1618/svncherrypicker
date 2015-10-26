@@ -1,0 +1,2 @@
+- use batch requests while getting svn logs for revisions
+- add commands details for populate and setup in readme file

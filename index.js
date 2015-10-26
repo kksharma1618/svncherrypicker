@@ -411,7 +411,7 @@ core.getMergeCommand = function(next) {
     if(j.pickedRevisions && j.pickedRevisions.length) {
         cmd+="-c"+j.pickedRevisions.join(",");
     }
-    cmd +=" "+currentSession.source +" "+currentSession.destination;
+    cmd +=" "+currentSession.source +" .";
 
     next(null, cmd);
 };

@@ -47,7 +47,7 @@ svncp setup http://svnexample.com/repo1/branches/feature1 http://svnexample.com/
 ``` bash
 svncp populate
 ```
-It could take a while if there are a lot of unmerged commits between source and destination.
+It could take a while if there are a lot of unmerged commits between source and destination. Since populate command caches data about revision details, subsequent runs will be faster.
 
 **I will then use filter command to find revisions**
 
@@ -115,5 +115,5 @@ I will just run
 svncp merge
 ```
 Which will print the svn merge command using source/destination setting from current session and revisions from saved bucket.
-I will then copy that command and run it to merge.
+I will then copy and run that command in destination working directory to merge.
 
