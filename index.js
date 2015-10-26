@@ -14,8 +14,9 @@ var minimatch = require("minimatch");
 
 var core = {};
 var options = {
-    dataFolder: path.resolve(__dirname, "data")
+    dataFolder: "~/.svncherrypicker"
 };
+fs.ensureDirSync(options.dataFolder);
 
 // utils
 core.utils = require("./utils");
