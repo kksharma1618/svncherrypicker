@@ -14,7 +14,7 @@ var minimatch = require("minimatch");
 
 var core = {};
 var options = {
-    dataFolder: "~/.svncherrypicker"
+    dataFolder: path.resolve(require("os-homedir")(), ".svncherrypicker")
 };
 fs.ensureDirSync(options.dataFolder);
 

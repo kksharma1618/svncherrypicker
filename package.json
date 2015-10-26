@@ -1,6 +1,6 @@
 {
   "name": "svncherrypicker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a small utility to find unmerged commits",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "md5": "^2.0.0",
     "minimatch": "^3.0.0",
     "moment": "^2.10.6",
+    "os-homedir": "^1.0.1",
     "svn-spawn": "^0.1.4",
     "underscore": "^1.8.3"
   },
