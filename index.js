@@ -24,7 +24,7 @@ core.utils = require("./utils");
 
 /**
  * loads current session from data/current_session.json file
- * 
+ *
  * @return Object {
  *         source: "",
  *         destination: ""
@@ -39,7 +39,7 @@ var currentSession = core.loadCurrentSession();
 
 /**
  * sets up current session. saves it to data/current_session.json
- * 
+ *
  * @param  {String} source      source url for merging
  * @param  {String} destination destination url for merging
  * @param  {String} baseUrl     baseurl of svn. not used currently
@@ -55,7 +55,7 @@ core.setupCurrentSession = function(source, destination, baseUrl) {
 
 /**
  * Uses mergeinfo command to find out list of unmerged commits between source and destination. uses svn log on each of them to get their details. caches in local file
- * 
+ *
  * @param  {Function} next called on completion or error
  */
 core.cacheUnmergedCommits = function(next) {
@@ -81,7 +81,7 @@ core.cacheUnmergedCommits = function(next) {
 
             console.log('%d unmerged revs found', revs.length);
 
-            
+
             var j = {
                 revisions: {},
                 source: currentSession.source,
@@ -129,9 +129,7 @@ core.cacheUnmergedCommits = function(next) {
 
             async.series(tasks, function(err) {
                 spinner.stop();
-                if(!err) {
-                    fs.outputJsonSync(cacheFile, j);
-                }
+                fs.outputJsonSync(cacheFile, j);
                 next(err, j);
             });
         }
@@ -142,7 +140,7 @@ core.cacheUnmergedCommits = function(next) {
 };
 /**
  * uses svn log to get details of revisions
- * 
+ *
  * @param  {Integer}   rev  revision number
  * @param  {String}   url  url of the repository
  * @param  {Function} next Called with err, response
@@ -187,7 +185,7 @@ core.getLog = function(rev, url, next) {
  * examples:
  * r:sent => new RegExp("sent")
  * r:f:gi:sent => new RegExp("sent", "gi")
- * 
+ *
  * @param  {String} s regex string in supported format
  * @return {RegExp}
  */
@@ -208,7 +206,7 @@ function parseRegex(s) {
 
 /**
  * parses date from yyyy-mm-dd string format
- * 
+ *
  * @param  {String} s date
  * @return {Date}
  */
@@ -218,7 +216,7 @@ function parseDate(s) {
 }
 
 /**
- * Use core.setupSession and core.cacheUnmergedCommits commands before calling this. It gets list of unmerged revisions (depending on current session). And filters the list by provided options. 
+ * Use core.setupSession and core.cacheUnmergedCommits commands before calling this. It gets list of unmerged revisions (depending on current session). And filters the list by provided options.
  *
  * Options:
  {
@@ -244,7 +242,7 @@ function parseDate(s) {
  * supported glob formats
  * g:<glob>
  * see https://github.com/isaacs/minimatch for <glob> format
- * 
+ *
  * @param  {Object}   o    Options
  * @param  {Function} next called with err, filtered revs
  */
@@ -357,7 +355,7 @@ core.filter = function(o, next) {
                 }
             }
 
-            if(o.revAfter && r.rev <= o.revAfter) { 
+            if(o.revAfter && r.rev <= o.revAfter) {
                 continue;
             }
 
@@ -381,7 +379,7 @@ core.filter = function(o, next) {
             return r.rev;
         });
     }
-    
+
 
     fs.writeJsonSync(cacheFile, j);
 
@@ -391,7 +389,7 @@ core.filter = function(o, next) {
 
 /**
  * Calculate merge command based on currently picked revisions and current session
- * 
+ *
  * @param  {Function} next called with err, cmd
  */
 core.getMergeCommand = function(next) {
@@ -423,7 +421,7 @@ core.getMergeCommand = function(next) {
  *
  * if unpick arg is set to true, this unpicks items from the saved list (kind of like deleting items from your shopping cart)
  *
- * 
+ *
  * @param  {String}   revisions Following things are supported: "last" => picks revisions filtered by last call to core.filter. "3,4,5" => picks rev number 3,4,5. "all" => only supported in unpick mode. clears entire saved list
  * @param  {Function} next      called with err, currently picked revisions
  * @param  {Boolean}   unpick
@@ -485,7 +483,7 @@ core.pickRevisions = function(revisions, next, unpick) {
         j.pickedRevisions = _.uniq(j.pickedRevisions);
     }
 
-    
+
 
     fs.writeJsonSync(cacheFile, j);
     next(null, j.pickedRevisions);
@@ -493,5 +491,3 @@ core.pickRevisions = function(revisions, next, unpick) {
 
 
 module.exports = core;
-
-
