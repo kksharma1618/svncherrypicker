@@ -1,11 +1,12 @@
 #! /usr/bin/env node
 var program = require('commander');
 var _ = require("underscore");
+var pkgInfo = require('../package.json');
 require("colors");
 var moment = require("moment");
 
 var core = require("../index");
-program.version('1.0.4');
+program.version(pkgInfo.version);
 
 program
     .command('setup [source] [destination]')
