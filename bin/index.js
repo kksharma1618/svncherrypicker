@@ -5,7 +5,7 @@ require("colors");
 var moment = require("moment");
 
 var core = require("../index");
-program.version('1.0.0');
+program.version('1.0.4');
 
 program
     .command('setup [source] [destination]')
@@ -28,7 +28,7 @@ program
     .command('pick [revisions]')
     .option('-f, --full-view', 'Displays full view of picked revisions')
     .option('-c, --display [display]', '"c" => "only counts", "t" => "table", "j" => "json"')
-    .option('-u, --fields [fields]', 'Which fields to display? "a,d,p,m" author,date,paths,message') 
+    .option('-u, --fields [fields]', 'Which fields to display? "a,d,p,m" author,date,paths,message')
     .description('Picks provided revisions and append to the save list. Revisions can be csv of revision "2,3,4". Or "last" in that case the filtered revisions of last filter command will be picked. Leave empty to see current picked revisions')
     .action(function(revisions, p){
         core.pickRevisions(revisions, function(err, revs) {
@@ -100,7 +100,7 @@ program
 
                             case "j":
                             console.log(JSON.stringify(r, null, 4));
-                            break; 
+                            break;
 
                             case "t":
                             core.utils.printObjectsInTable(r, rf);
@@ -228,7 +228,7 @@ program
 
                     case "j":
                         console.log(JSON.stringify(r, null, 4));
-                    break; 
+                    break;
 
                     case "t":
                         core.utils.printObjectsInTable(r, rf);
