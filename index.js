@@ -58,26 +58,50 @@ core.setupCurrentSession = function(source, destination, baseUrl) {
  *
  * @param  {Function} next called on completion or error
  */
-core.cacheUnmergedCommits = function(next) {
+core.cacheUnmergedCommits = function(author, next) {
     if(!currentSession) {
         return next('no session');
     }
     var key = md5(currentSession.source+'::::'+currentSession.destination);
     var cacheFile = path.resolve(options.dataFolder, "unmerged_revs_"+key+".json");
-    svn.cmd(['mergeinfo', currentSession.source, currentSession.destination, "--show-revs", "eligible"], function(err, data) {
+    var args = ['mergeinfo', currentSession.source, currentSession.destination, "--show-revs", "eligible"];
+    if(author) {
+      args.push("--log");
+    }
+    svn.cmd(args, function(err, data) {
         var revs = [];
         if(data) {
-            var a = data.split("\n");
-            a.forEach(function(r) {
+            if(author) {
+              let regex = /^r[\d]+\s\|\s/;
+              // has log info. need new filter
+              let a = data.split("\n");
+              a.forEach(function(r) {
                 r = r.trim();
-                if(r && r.indexOf('r') === 0) {
-                    r = r.replace('r', '');
-                    r = parseInt(r, 10);
-                    if(r) {
-                        revs.push(r);
+                if(regex.test(r)) {
+                  r = r.split("|");
+                  if(r.length > 2) {
+                    let rev = parseInt(r[0].replace("r", "").trim(), 10);
+                    if(rev && r[1].trim() == author) {
+                      revs.push(rev);
                     }
+                  }
                 }
-            });
+              });
+            }
+            else {
+              let a = data.split("\n");
+              a.forEach(function(r) {
+                  r = r.trim();
+                  if(r && r.indexOf('r') === 0) {
+                      r = r.replace('r', '');
+                      r = parseInt(r, 10);
+                      if(r) {
+                          revs.push(r);
+                      }
+                  }
+              });
+            }
+
 
             console.log('%d unmerged revs found', revs.length);
 

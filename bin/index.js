@@ -18,9 +18,10 @@ program
 
 program
     .command('populate')
-    .description('finds unmerged commits from source to destination. caches them (including log details) for fast access. depending on the number of unmerged commits it can take a long time to finish')
-    .action(function(){
-        core.cacheUnmergedCommits(function(err, data) {
+    .option('-a, --author', 'Get unmerged commits only for this author')
+    .description('finds unmerged commits from source to destination. caches them (including log details) for fast access. depending on the number of unmerged commits it can take a long time to finish.')
+    .action(function(author){
+        core.cacheUnmergedCommits(author, function(err, data) {
             console.log(err ? (err+"").red : 'Done'.green);
         });
     });
